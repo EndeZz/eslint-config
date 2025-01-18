@@ -1,0 +1,47 @@
+{
+  "name": "@endezz/eslint-config",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "eslint config",
+  "author": "endezz",
+  "license": "MIT",
+  "homepage": "https://github.com/EndeZz/eslint-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EndeZz/eslint-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EndeZz/eslint-config/issues"
+  },
+  "keywords": [
+    "eslint-config",
+    "eslint",
+    "config",
+    "lint",
+    "react"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "files": ["dist"],
+  "scripts": {
+    "lint": "eslint . lib",
+    "build": "tsc --declaration",
+    "serve": "tsc --watch",
+    "publish": "npm run lint && npm run build && npm publish --access public"
+  },
+  "dependencies": {
+    "@antfu/eslint-config": "3.14.0",
+    "eslint": "9.18.0",
+    "eslint-plugin-jsx-a11y": "6.10.2"
+  },
+  "devDependencies": {
+    "@types/eslint-plugin-jsx-a11y": "6.10.0",
+    "@types/node": "22.10.7",
+    "typescript": "5.7.3"
+  }
+}
