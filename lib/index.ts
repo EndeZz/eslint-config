@@ -1,3 +1,5 @@
+import type { Linter } from 'eslint'
+
 import antfu from '@antfu/eslint-config'
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y'
 
@@ -104,7 +106,15 @@ const eslintConfig: EslintConfig = ({ jsxA11y = false, ...options }, ...configs)
         'endezz-jsx-a11y': pluginJsxA11y,
       },
       rules: {
-        ...pluginJsxA11y.flatConfigs.recommended.rules,
+        ...Object.entries(pluginJsxA11y.flatConfigs.recommended.rules ?? {}).reduce<Record<string, Linter.RuleEntry>>(
+          (acc, [key, value]) => {
+            if (value) {
+              acc[key.replace('jsx-a11y', 'endezz-jsx-a11y')] = value
+            }
+            return acc
+          },
+          {},
+        ),
       },
     })
   }
