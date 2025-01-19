@@ -1,5 +1,3 @@
-import type { Linter } from 'eslint'
-
 import antfu from '@antfu/eslint-config'
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y'
 
@@ -99,27 +97,26 @@ const sortConfig = {
 } satisfies OptionsConfig
 
 const eslintConfig: EslintConfig = ({ jsxA11y = false, ...options }, ...configs) => {
-  if (jsxA11y) {
+  if (jsxA11y && options.react) {
+    const files = ['**/*.jsx']
+
+    if (options.typescript) {
+      files.push('**/*.tsx')
+    }
+
     configs.unshift({
       name: 'endezz/jsx-a11y',
+      files,
       plugins: {
-        'endezz-jsx-a11y': pluginJsxA11y,
+        'jsx-a11y': pluginJsxA11y,
       },
-      rules: {
-        ...Object.entries(pluginJsxA11y.flatConfigs.recommended.rules ?? {}).reduce<Record<string, Linter.RuleEntry>>(
-          (acc, [key, value]) => {
-            if (value) {
-              acc[key.replace('jsx-a11y', 'endezz-jsx-a11y')] = value
-            }
-            return acc
-          },
-          {},
-        ),
-      },
+      ...pluginJsxA11y.flatConfigs.recommended,
     })
   }
 
-  return antfu(options, [baseConfig, sortConfig], ...configs)
+  const userConfigs = [baseConfig, sortConfig]
+
+  return antfu(options, ...userConfigs, ...configs)
 }
 
 export default eslintConfig
