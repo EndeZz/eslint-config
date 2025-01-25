@@ -36,13 +36,13 @@
     "prepublish": "npm run lint && npm run build"
   },
   "dependencies": {
-    "@antfu/eslint-config": "3.14.0",
-    "eslint": "9.18.0",
+    "@antfu/eslint-config": "4.0.1",
+    "eslint": "9.19.0",
     "eslint-plugin-jsx-a11y": "6.10.2"
   },
   "devDependencies": {
     "@types/eslint-plugin-jsx-a11y": "6.10.0",
-    "@types/node": "22.10.7",
+    "@types/node": "22.10.10",
     "esbuild": "0.24.2",
     "typescript": "5.7.3"
   }
