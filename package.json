@@ -27,23 +27,28 @@
     }
   },
   "main": "./dist/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "lint": "eslint . lib",
-    "build": "tsc --declaration && esbuild \"./dist/index.js\" --minify --outfile=\"dist/index.min.js\"",
     "serve": "tsc --watch",
+    "lint": "eslint",
     "inspector": "npx @eslint/config-inspector@latest",
-    "prepublish": "npm run lint && npm run build"
+    "clean": "rimraf ./dist",
+    "build": "pnpm run clean && tsc --declaration && esbuild \"./dist/index.js\" --minify --outfile=\"dist/index.min.js\"",
+    "prepublish": "pnpm run lint && pnpm run build",
+    "publishd": "pnpm publish --dry-run"
   },
   "dependencies": {
-    "@antfu/eslint-config": "4.0.1",
-    "eslint": "9.19.0",
+    "@antfu/eslint-config": "4.12.0",
+    "eslint": "9.25.1",
     "eslint-plugin-jsx-a11y": "6.10.2"
   },
   "devDependencies": {
     "@types/eslint-plugin-jsx-a11y": "6.10.0",
-    "@types/node": "22.10.10",
-    "esbuild": "0.24.2",
-    "typescript": "5.7.3"
+    "@types/node": "22.15.3",
+    "esbuild": "0.25.3",
+    "rimraf": "6.0.1",
+    "typescript": "5.8.3"
   }
 }

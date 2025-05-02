@@ -110,7 +110,6 @@ const eslintConfig: EslintConfig = ({ jsxA11y = false, ...options }, ...configs)
       plugins: {
         'jsx-a11y': pluginJsxA11y,
       },
-      languageOptions: pluginJsxA11y.flatConfigs.recommended.languageOptions,
       rules: pluginJsxA11y.flatConfigs.recommended.rules,
     })
   }
