@@ -1,7 +1,7 @@
-import antfu from '@antfu/eslint-config'
-import pluginJsxA11y from 'eslint-plugin-jsx-a11y'
+import antfu from '@antfu/eslint-config';
+import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
 
-import type { EslintConfig, OptionsConfig } from './types'
+import type { EslintConfig, OptionsConfig } from './types';
 
 const baseConfig = {
   name: 'endezz/base',
@@ -9,10 +9,8 @@ const baseConfig = {
     'antfu/if-newline': 'off',
     'antfu/top-level-function': 'off',
     'no-console': 'warn',
-    'style/comma-dangle': ['error', 'always-multiline'],
-    'style/object-curly-newline': ['error', { multiline: true, consistent: true }],
   },
-} satisfies OptionsConfig
+} satisfies OptionsConfig;
 
 const sortConfig = {
   name: 'endezz/sort',
@@ -94,14 +92,40 @@ const sortConfig = {
       },
     ],
   },
-} satisfies OptionsConfig
+} satisfies OptionsConfig;
 
-const eslintConfig: EslintConfig = ({ jsxA11y = false, ...options }, ...configs) => {
+const stylisticConfig = {
+  name: 'endezz/stylistic',
+  rules: {
+    'style/indent': ['error', 2, { SwitchCase: 1 }],
+    'style/semi': ['error', 'always'],
+    'style/no-tabs': 'error',
+    'style/quotes': ['error', 'single', { allowTemplateLiterals: true }],
+    'style/quote-props': ['error', 'as-needed', { keywords: true }],
+    'style/arrow-parens': ['error', 'always'],
+    'style/brace-style': 'error',
+    'style/operator-linebreak': 'error',
+    'style/comma-dangle': ['error', 'always-multiline'],
+    'style/jsx-one-expression-per-line': 'off',
+    'style/jsx-quotes': ['error', 'prefer-double'],
+    'style/linebreak-style': ['error', 'unix'],
+    'style/max-len': [
+      'error',
+      120,
+      2,
+      { ignoreComments: true, ignoreStrings: true, ignoreTemplateLiterals: true },
+    ],
+    'style/member-delimiter-style': ['error', { multiline: { delimiter: 'semi' } }],
+    'style/multiline-ternary': 'off',
+  },
+} satisfies OptionsConfig;
+
+const eslintConfig: EslintConfig = ({ jsxA11y = false, stylistic = false, ...options }, ...configs) => {
   if (jsxA11y && options.react) {
-    const files = ['**/*.jsx']
+    const files = ['**/*.jsx'];
 
     if (options.typescript) {
-      files.push('**/*.tsx')
+      files.push('**/*.tsx');
     }
 
     configs.unshift({
@@ -111,12 +135,16 @@ const eslintConfig: EslintConfig = ({ jsxA11y = false, ...options }, ...configs)
         'jsx-a11y': pluginJsxA11y,
       },
       rules: pluginJsxA11y.flatConfigs.recommended.rules,
-    })
+    });
   }
 
-  const userConfigs = [baseConfig, sortConfig]
+  if (stylistic) {
+    configs.unshift(stylisticConfig);
+  }
 
-  return antfu(options, ...userConfigs, ...configs)
-}
+  const userConfigs = [baseConfig, sortConfig];
 
-export default eslintConfig
+  return antfu({ ...options, stylistic }, ...userConfigs, ...configs);
+};
+
+export default eslintConfig;
