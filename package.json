@@ -26,17 +26,17 @@
       "default": "./dist/index.js"
     }
   },
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "serve": "tsc --watch",
+    "serve": "tsup --watch",
     "lint": "eslint . --fix",
     "inspector": "npx @eslint/config-inspector@latest",
-    "clean": "rimraf ./dist",
-    "build": "pnpm run clean && tsc --declaration && esbuild \"./dist/index.js\" --minify --outfile=\"dist/index.min.js\"",
-    "prepublish": "pnpm run lint && pnpm run build"
+    "build": "tsup",
+    "prepublish": "pnpm run build && pnpm run lint"
   },
   "dependencies": {
     "@antfu/eslint-config": "4.13.0",
@@ -46,8 +46,7 @@
   "devDependencies": {
     "@types/eslint-plugin-jsx-a11y": "6.10.0",
     "@types/node": "22.15.17",
-    "esbuild": "0.25.4",
-    "rimraf": "6.0.1",
+    "tsup": "8.4.0",
     "typescript": "5.8.3"
   }
 }
