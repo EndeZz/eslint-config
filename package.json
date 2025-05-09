@@ -32,22 +32,21 @@
   ],
   "scripts": {
     "serve": "tsc --watch",
-    "lint": "eslint",
+    "lint": "eslint . --fix",
     "inspector": "npx @eslint/config-inspector@latest",
     "clean": "rimraf ./dist",
     "build": "pnpm run clean && tsc --declaration && esbuild \"./dist/index.js\" --minify --outfile=\"dist/index.min.js\"",
-    "prepublish": "pnpm run lint && pnpm run build",
-    "publishd": "pnpm publish --dry-run"
+    "prepublish": "pnpm run lint && pnpm run build"
   },
   "dependencies": {
-    "@antfu/eslint-config": "4.12.0",
-    "eslint": "9.25.1",
+    "@antfu/eslint-config": "4.13.0",
+    "eslint": "9.26.0",
     "eslint-plugin-jsx-a11y": "6.10.2"
   },
   "devDependencies": {
     "@types/eslint-plugin-jsx-a11y": "6.10.0",
-    "@types/node": "22.15.3",
-    "esbuild": "0.25.3",
+    "@types/node": "22.15.17",
+    "esbuild": "0.25.4",
     "rimraf": "6.0.1",
     "typescript": "5.8.3"
   }
