@@ -101,7 +101,7 @@ const stylisticConfig = {
     'style/semi': ['error', 'always'],
     'style/no-tabs': 'error',
     'style/quotes': ['error', 'single', { allowTemplateLiterals: true }],
-    'style/quote-props': ['error', 'as-needed', { keywords: true }],
+    'style/quote-props': ['error', 'as-needed'],
     'style/arrow-parens': ['error', 'always'],
     'style/brace-style': 'error',
     'style/operator-linebreak': 'error',
