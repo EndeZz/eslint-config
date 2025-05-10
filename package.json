@@ -1,18 +1,8 @@
 {
   "name": "@endezz/eslint-config",
-  "type": "module",
   "version": "0.0.9",
   "description": "eslint config",
-  "author": "endezz",
-  "license": "MIT",
-  "homepage": "https://github.com/EndeZz/eslint-config#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EndeZz/eslint-config.git"
-  },
-  "bugs": {
-    "url": "https://github.com/EndeZz/eslint-config/issues"
-  },
+  "type": "module",
   "keywords": [
     "eslint-config",
     "eslint",
@@ -20,17 +10,27 @@
     "lint",
     "react"
   ],
+  "license": "MIT",
+  "homepage": "https://github.com/EndeZz/eslint-config#readme",
+  "bugs": {
+    "url": "https://github.com/EndeZz/eslint-config/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EndeZz/eslint-config.git"
+  },
+  "author": "endezz",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     }
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "serve": "tsup --watch",
     "lint": "eslint . --fix",
