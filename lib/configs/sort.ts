@@ -3,13 +3,6 @@ import type { UserConfig } from '../types';
 export const sortImportsConfig: UserConfig = {
   name: 'endezz/sort/imports',
   rules: {
-    'perfectionist/sort-array-includes': [
-      'error',
-      {
-        order: 'asc',
-        type: 'alphabetical',
-      },
-    ],
     'perfectionist/sort-imports': [
       'error',
       {
@@ -25,12 +18,7 @@ export const sortImportsConfig: UserConfig = {
           'side-effect-style',
           'unknown',
         ],
-        customGroups: {
-          value: { react: ['^react$', '^react-.+'] },
-          type: { react: ['^react$', '^react-.+'] },
-        },
         internalPattern: ['^[~@#]/.*'],
-        newlinesBetween: 'always',
         order: 'asc',
         type: 'natural',
       },
@@ -40,41 +28,15 @@ export const sortImportsConfig: UserConfig = {
       {
         groups: ['unknown', 'method', 'multiline'],
         order: 'asc',
-        type: 'alphabetical',
+        type: 'natural',
       },
     ],
     'perfectionist/sort-jsx-props': [
       'error',
       {
         groups: ['shorthand', 'reserved', 'multiline', 'unknown', 'callback'],
-        customGroups: {
-          callback: 'on*',
-          reserved: ['key', 'ref'],
-        },
         order: 'asc',
-        type: 'alphabetical',
-      },
-    ],
-    'perfectionist/sort-union-types': [
-      'error',
-      {
-        groups: [
-          'conditional',
-          'function',
-          'import',
-          'intersection',
-          'keyword',
-          'literal',
-          'named',
-          'object',
-          'operator',
-          'tuple',
-          'union',
-          'nullish',
-        ],
-        order: 'asc',
-        specialCharacters: 'keep',
-        type: 'alphabetical',
+        type: 'natural',
       },
     ],
   },

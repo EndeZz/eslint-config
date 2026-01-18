@@ -1,10 +1,10 @@
 import type antfu from '@antfu/eslint-config';
-import type { OptionsConfig as AntfuOptionsConfig, TypedFlatConfigItem as AntfuTypedFlatConfigItem } from '@antfu/eslint-config';
+import type { OptionsConfig as AntfuOptionsConfig } from '@antfu/eslint-config';
 
 type EslintConfigReturn = ReturnType<typeof antfu>;
 export type UserConfig = Parameters<typeof antfu>[1];
 
-export interface Options extends AntfuOptionsConfig, AntfuTypedFlatConfigItem {
+export interface Options extends AntfuOptionsConfig {
   /**
    * Requires `react: true`
    *

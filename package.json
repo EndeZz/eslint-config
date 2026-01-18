@@ -40,14 +40,18 @@
     "prepublish": "pnpm run build && pnpm run lint"
   },
   "dependencies": {
-    "@antfu/eslint-config": "4.13.0",
-    "eslint": "9.26.0",
+    "@antfu/eslint-config": "7.0.1",
+    "eslint": "9.39.2",
     "eslint-plugin-jsx-a11y": "6.10.2"
   },
   "devDependencies": {
-    "@types/eslint-plugin-jsx-a11y": "6.10.0",
-    "@types/node": "22.15.17",
-    "tsup": "8.4.0",
-    "typescript": "5.8.3"
+    "@types/eslint-plugin-jsx-a11y": "6.10.1",
+    "@types/node": "25.0.9",
+    "@types/react": "19.2.8",
+    "@types/react-dom": "19.2.3",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tsup": "8.5.1",
+    "typescript": "5.9.3"
   }
 }
