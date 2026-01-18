@@ -36,6 +36,7 @@
     "lint": "eslint . --fix",
     "inspector": "npx @eslint/config-inspector@latest",
     "build": "tsup",
+    "check-update": "pnpm update -i -L",
     "prepublish": "pnpm run build && pnpm run lint"
   },
   "dependencies": {
