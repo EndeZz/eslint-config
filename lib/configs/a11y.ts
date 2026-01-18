@@ -1,5 +1,4 @@
-import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
-
+import { pluginJsxA11y } from '../plugins';
 import type { UserConfig } from '../types';
 
 export const jsxA11yConfig: UserConfig = {

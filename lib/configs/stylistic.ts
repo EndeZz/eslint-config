@@ -6,7 +6,7 @@ export const stylisticConfig: UserConfig = {
     'style/indent': ['error', 2, { SwitchCase: 1 }],
     'style/semi': ['error', 'always'],
     'style/no-tabs': 'error',
-    'style/quotes': ['error', 'single', { allowTemplateLiterals: true }],
+    'style/quotes': ['error', 'single'],
     'style/quote-props': ['error', 'as-needed'],
     'style/arrow-parens': ['error', 'always'],
     'style/brace-style': 'error',

@@ -8,15 +8,19 @@ export const sortImportsConfig: UserConfig = {
       {
         groups: [
           'react',
-          'type',
-          ['builtin', 'external'],
-          ['internal', 'internal-type'],
-          ['parent', 'parent-type', 'sibling', 'sibling-type', 'index', 'index-type'],
-          'object',
-          'style',
+          'type-import',
+          ['value-builtin', 'value-external'],
+          ['type-internal', 'value-internal'],
+          ['type-parent', 'value-parent', 'type-sibling', 'value-sibling', 'type-index', 'value-index'],
           'side-effect',
-          'side-effect-style',
+          'ts-equals-import',
           'unknown',
+        ],
+        customGroups: [
+          {
+            groupName: 'react',
+            elementNamePattern: ['^react$', '^react-.+'],
+          },
         ],
         internalPattern: ['^[~@#]/.*'],
         order: 'asc',
@@ -31,14 +35,8 @@ export const sortImportsConfig: UserConfig = {
         type: 'natural',
       },
     ],
-    'perfectionist/sort-jsx-props': [
-      'error',
-      {
-        groups: ['shorthand', 'reserved', 'multiline', 'unknown', 'callback'],
-        order: 'asc',
-        type: 'natural',
-      },
-    ],
+    'perfectionist/sort-named-exports': ['error', { order: 'asc', type: 'natural' }],
+    'perfectionist/sort-named-imports': ['error', { order: 'asc', type: 'natural' }],
   },
 };
 
